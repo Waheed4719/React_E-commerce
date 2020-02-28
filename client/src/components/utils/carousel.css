@@ -1,0 +1,25 @@
+/* Customize website's scrollbar like Mac OS
+Not supports in Firefox and IE */
+
+/* total width */
+.carousel::-webkit-scrollbar {
+    background-color:#fff;
+    width:16px
+  }
+  
+  /* background of the scrollbar except button or resizer */
+  .carousel::-webkit-scrollbar-track {
+    background-color:#fff;
+    
+  }
+  
+  /* scrollbar itself */
+  .carousel::-webkit-scrollbar-thumb {
+    background-color:#babac0;
+    border-radius:16px;
+    border:4px solid #fff
+  }
+  
+  /* set button(top and bottom of the scrollbar) */
+  .carousel::-webkit-scrollbar-button {display:none}
+  
