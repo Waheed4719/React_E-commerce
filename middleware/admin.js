@@ -5,7 +5,7 @@ function auth(req,res,next){
     var token = req.headers['authorization'];
     console.log('in middleware')
     if (token){
-        
+        console.log(token)
         var token = token.split(" ");
         token = token[1];
         jwt.verify(token, 'SECRET', function (err, decoded){
@@ -19,6 +19,7 @@ function auth(req,res,next){
                     req.admin = decoded;
                     next();
                 })
+                .catch(error=> res.status(403).json(error))
                
             }
         });

@@ -3,10 +3,11 @@ const multer = require('multer')
 const authenticate = require('./../authenticate')
 const express = require('express')
 const router = express.Router()
-const { getProducts, addProduct } = require('./../controllers/productController')
+const { getProducts, getSingleProduct } = require('./../controllers/productController')
 
 
 router.get('/getProducts',getProducts)
+router.get('/:id',getSingleProduct)
 // router.post('/addProduct', addProduct)
 
 

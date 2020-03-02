@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import './style.css'
-import Card from './../components/Cards/Card.js'
+// import Card from './../components/Cards/Card.js'
+import {Card} from 'antd'
+import ImageSlider from './../../src/components/utils/ImageSlider'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Axios from 'axios'
+import { Redirect, Link } from 'react-router-dom'
 
-function ProductList  () {
+const { Meta } = Card
+ function ProductList  () {
     const [products, setProducts] = useState([{}])
     const [error, setError] = useState('')
 
@@ -21,10 +25,26 @@ function ProductList  () {
             console.log(error)
         })
     }
+
+   
+    const card = products.map((prod, index) => 
     
-    const card = products.map((prod, index) => <Card key={index} img = {prod.images} title={prod.title} price={prod.price} />)
+    
+    // <Card  key={index} id= {prod._id} img = {prod.images} title={prod.title} price={prod.price} />
+    
+    <Card  key={index} style={{margin: "20px",padding:"5px"}}
+    hoverable={true}
+    cover={<Link to={'/store/' + prod._id }><ImageSlider images={prod.images} /></Link>}
+    >
+    <Meta
+         title={prod.title}
+         description ={`$${prod.price}`}
+    /> 
+    </Card>
+    
+    )
     return (
-        <div style={{display: "flex",justifyContent:"center",}}>
+        <div style={{display: "flex",justifyContent:"center",fontFamily:"montserrat"}}>
         <div style={{
            
             display:"flex",

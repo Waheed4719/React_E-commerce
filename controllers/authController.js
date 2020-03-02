@@ -67,19 +67,12 @@ module.exports = {
                 }
                 
             },
-
-            getUsers(req,res){
-                User.find()
-                .then(users => {
-                    if(users){
-                        res.json(users)
-                    }
-                    else{
-                        res.json({message: "No Users Found!"})
-                    }
-                })
-                .catch(error => res.status(400).json(error))
+            
+            Add_To_Cart(req,res){
+                const {data} = req.body
+                console.log(req.body)
             }
+         
 
 
 

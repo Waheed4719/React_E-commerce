@@ -4,7 +4,7 @@ const schema = mongoose.Schema;
 
 const productSchema = new schema({
     
-    writer: { type: schema.Types.ObjectId, ref: 'User' },
+    uploader: { type: schema.Types.ObjectId, ref: 'Admin' },
 
     title: { type: String, maxlength: 50 },
 

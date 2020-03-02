@@ -82,3 +82,28 @@ export const logout = history => {
         }
     }
 }
+
+export const addToCart = (data,history) => dispatch =>{
+
+    Axios.post('/api/auth/add_to_cart',data)
+    .then(items =>{
+        
+        console.log(items.data)
+        dispatch({
+            type: Types.ADD_TO_CART, 
+            payload: {
+                cart_data:items.data
+        }
+    })
+    })
+    .catch(error =>{
+        console.log(error.response.data)
+        dispatch({
+            type: Types.ERRORS,
+            payload: {
+                error: error.response.data
+            }
+        })
+    })
+
+}

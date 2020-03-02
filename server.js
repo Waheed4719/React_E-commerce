@@ -14,25 +14,27 @@ const express = require('express'),
       app.use(express.json())
       app.use( express.urlencoded({ extended: false }) )
       
-      auth = require('./routes/auth')
-      products = require('./routes/products')
-      admin = require('./routes/admin')
-
+      auth = require('./routes/auth'),
+      products = require('./routes/products'),
+      admin = require('./routes/admin'),
+      {getUsers} = require('./controllers/authController')
       app.use('/public', express.static('public'));
 
       app.use('/api/auth',auth)
       app.use('/api/products',products)
       app.use('/api/admin',admin)
       
-      const checkUserType = function(req,res,next){
-        const userType = req.originalUrl.split('/')[2]
+
+
+    //   const checkUserType = function(req,res,next){
+    //     const userType = req.originalUrl.split('/')[2]
         
-        require('./passport')(userType,passport)
-        next();
-    }
+    //     require('./passport')(userType,passport)
+    //     next();
+    // }
     
-      app.use(checkUserType)
-      app.use(passport.initialize())
+    //   app.use(checkUserType)
+    //   app.use(passport.initialize())
         
       DIR = './public/uploads'
 

@@ -8,17 +8,94 @@ li{
     display: inline-block;
     text-decoration: none;
     margin: 10px;
-    font-weight: 500;
     color: #4c5d7a;;
     font-size: large;
-    font-weight: 600 !important;
+    font-weight: 400 ;
 }
 li:hover{
     color: royalblue;
 }
 .nav{
-    display:block;
+    display:flex;
+    flex-direction: column;
+    width: 100%;
     text-align: center;
     background-color: #FFFFFF;
     margin:0;
+    font-family: "montserrat";
+    
+}
+
+.hamMenu{
+    padding: 5px;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    width: max-content;
+    background-color: white;
+    z-index: 200;
+    /* position: fixed; */
+}
+.hamMenu div{
+    width: 40px;
+    background-color: red;
+    height: 6px;
+    position: relative;
+    margin: 4px;
+
+
+}
+@media only screen and (max-width : 452px){
+    .nav{
+        position: fixed;
+        z-index: 900;
+        
+    }
+
+    .nav li{
+        display: flex;
+        flex-direction: column;
+        color: black;
+        padding: 10px;
+        margin: 0px;
+        font-family: 'montserrat';
+    }
+    .nav ul{
+        margin: 0px;
+        width: 100%;
+        background-color: white;
+        position: fixed;
+        z-index: 200 ;
+        transform: translateY(-130%);
+        transition: transform 0.5s ease-in-out !important;
+        border-bottom: 3px solid lavender;
+    }
+    .open {
+        
+        background-color: white;
+        position: relative;
+        transform: translateY(0) !important;
+        transition: transform 0.5s ease-in-out !important;
+    }
+
+    .open li{
+        color: black;
+        width: 100%;
+        margin: 0px;
+        padding: 10px;
+        
+    }
+
+   
+    .hamMenu{
+        width: 100% ;
+        z-index: 300;
+        display: block !important;
+        position: relative;
+        background-color: white;
+        padding: 10px;
+    }
+    
+
+
 }

@@ -42,7 +42,7 @@ export class AdminLogin extends Component {
     
     render() {
         if(this.props.admin.isAdmin){
-            return <Redirect to='/admin/home'   />
+            return <Redirect to='/admin/uploadProduct'   />
         }
        
         return (

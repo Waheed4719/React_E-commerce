@@ -37,7 +37,7 @@ module.exports = {
             Register(req,res){
 
                 const {email,pass,name} = req.body
-                console.log(req.body)
+                
                 let validate = registerValidator({name,email,pass})
                 let error = validate.error
                 if(!validate.isValid){
@@ -47,7 +47,7 @@ module.exports = {
 
                     Admin.findOne({email:email})
                     .then(adminUser => {
-                        console.log(adminUser)
+                        
                         if(adminUser){
                             res.json({error:"Admin already exists!"})
                         }
@@ -74,6 +74,19 @@ module.exports = {
                     }
                     else{
                         res.json({message: "No Admins Found!"})
+                    }
+                })
+                .catch(error => res.status(400).json(error))
+            },
+
+            getUsers(req,res){
+                User.find()
+                .then(users => {
+                    if(users){
+                        res.json(users)
+                    }
+                    else{
+                        res.json({message: "No Users Found!"})
                     }
                 })
                 .catch(error => res.status(400).json(error))

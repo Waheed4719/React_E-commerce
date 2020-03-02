@@ -3,6 +3,7 @@
 export const SET_USER = "SET_USER"
 export const USERS_ERROR = "USERS_ERROR"
 export const CREATE_USER = "CREATE_USER"
+export const ADD_TO_CART = "ADD_TO_CART"
 export const GET_PRODUCTS = "GET_PRODUCTS"
 export const ERRORS = "ERRORS"
 //Admin Types

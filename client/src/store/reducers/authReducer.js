@@ -27,6 +27,13 @@ const authReducer = (state=init,action) =>{
                 createdUser: action.payload.createdUser
             }
         }
+        case Types.ADD_TO_CART: {
+            return {
+                ...state, 
+                cart_data: action.payload.cart_data
+
+            }
+        }
         default: return state
     }
 }

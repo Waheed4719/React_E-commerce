@@ -1,12 +1,13 @@
 const express = require('express'),
       router = express.Router(),  
-      {Login, Register, getAdmins} = require('./../controllers/adminController'),
+      {Login, Register, getAdmins, getUsers} = require('./../controllers/adminController'),
       {addProduct} = require('./../controllers/productController'),
       authenticate = require('./../authenticate')
        admin = require('./../middleware/admin') 
 router.post('/login',Login)
 router.post('/register',Register)
 router.get('/admins',getAdmins)
+router.get('/getUsers',getUsers)
 
 router.post('/products/addProduct',admin, addProduct)
 

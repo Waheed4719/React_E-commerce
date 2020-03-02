@@ -3,10 +3,11 @@ import Upload from './../../components/utils/FileUpload'
 
 import { Typography, Button, Form, Input} from 'antd';
 import Axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
 const { Title } = Typography;
 const { TextArea } = Input;
-function UploadProduct() {
+function UploadProduct (props) {
     const history = useHistory()
 
     const [Images, setImages] = useState([])
@@ -58,7 +59,9 @@ function UploadProduct() {
             console.log(error)})
 
     }
-
+    if(!props.admin.isAdmin){
+        return <Redirect to='/admin'   />
+    }
 
     return (
        
@@ -112,4 +115,7 @@ function UploadProduct() {
     )
 }
 
-export default UploadProduct
+const mapStateToProps = state => ({
+    admin : state.admin
+})
+export default connect(mapStateToProps)(UploadProduct)

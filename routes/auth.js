@@ -1,14 +1,15 @@
 const express = require('express'),
       router = express.Router(),  
-      {Login, Register, getUsers} = require('./../controllers/authController')
+      {Login, Register, Add_To_Cart} = require('./../controllers/authController')
       multer = require('multer'),
-      DIR = './public/uploads';
+      DIR = './public/uploads',
+      auth = require('./../middleware/auth.js'),
       storage = require('./../server.js')  
 
       
 router.post('/login',Login)
 router.post('/register',Register)
-router.get('/users',getUsers)
+router.post('/add_to_cart',auth, Add_To_Cart)
 
 
 

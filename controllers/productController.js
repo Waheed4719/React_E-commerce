@@ -11,7 +11,6 @@ module.exports = {
 
     addProduct(req,res){
         const {title, price, images, description} = req.body
-        console.log(req.body)
         const newProd = new Product()
         newProd.title = title
         newProd.price = price
@@ -19,10 +18,22 @@ module.exports = {
         newProd.description = description
         newProd.save()
         .then(savedProd => {
-            console.log(savedProd)
+            
             res.status(200).json({success:true,savedProd})})
         .catch(err => res.status(400).json(err))
         
+    },
+    getSingleProduct(req,res){
+        
+        let id = req.params.id
+        Product.findOne({_id:id})
+        .then(product=>{
+            console.log(product)
+            res.status(200).json(product)
+        })
+        .catch(error=>{
+            res.status(404).json(error)
+        })
     },
 
     deleteProduct(req,res){

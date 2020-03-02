@@ -3,12 +3,12 @@ const jwt = require('jsonwebtoken')
 function auth(req,res,next){
 
     var token = req.headers['authorization'];
-    console.log(req.headers)
+    
     if (token){
         
         var token = token.split(" ");
         token = token[1];
-        console.log(token)
+        
        jwt.verify(token, 'SECRET',function  (err, decoded){
            
             if (err){
