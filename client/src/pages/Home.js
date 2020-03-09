@@ -14,7 +14,7 @@ function Home() {
 
 
             <Icon style={{color: "darkslategray",fontSize: "40px"}} type="home" theme="outlined"/>
-            <h3 style={{color: "darkslategray", fontWeight:"lighter"}} >Welcome Home!</h3>
+            <h3 style={{color: "darkslategray", fontWeight:"lighter"}} >Welcome Home! This is Sparta!</h3>
         </div>
     )
 }
