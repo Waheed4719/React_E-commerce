@@ -1,13 +1,8 @@
 import React from 'react'
 import { Carousel } from 'antd'
 function ImageSlider({images}) {
-   var Url =''
- if(window.location.host.includes('localhost')){
-    Url = 'http://localhost:5000'
- }
- else{
-    Url = 'https://powerful-garden-71525.herokuapp.com'
- }
+   var Url =window.location.protocol + '//' + window.location.host
+
     return (
         <div >
             {images? 
@@ -18,8 +13,7 @@ function ImageSlider({images}) {
                   <div key={index}>
                       <img style={{ width: '100%', maxHeight: '150px' }}
                           src={`${Url}/${image}`} alt="productImage" />
-                         
-                         
+
                   </div>
               ))}
           </Carousel>

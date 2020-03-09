@@ -6,7 +6,6 @@ const express = require('express'),
       port = process.env.PORT || 5000,
       path = require('path'),
       multer = require('multer'),
-      passport = require('passport'),
       socketio = require('socket.io'),
       http = require('http'),
       server = http.createServer(app);
@@ -23,18 +22,6 @@ const express = require('express'),
       app.use('/api/auth',auth)
       app.use('/api/products',products)
       app.use('/api/admin',admin)
-      
-
-
-    //   const checkUserType = function(req,res,next){
-    //     const userType = req.originalUrl.split('/')[2]
-        
-    //     require('./passport')(userType,passport)
-    //     next();
-    // }
-    
-    //   app.use(checkUserType)
-    //   app.use(passport.initialize())
         
 
 

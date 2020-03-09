@@ -1,6 +1,5 @@
 const Product = require('./../models/Product.js')
 const multer = require('multer')
-const authenticate = require('./../authenticate')
 const express = require('express')
 const router = express.Router()
 const { getProducts, getSingleProduct } = require('./../controllers/productController')
