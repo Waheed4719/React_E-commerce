@@ -10,7 +10,13 @@ import './style.css'
 import { useHistory } from 'react-router-dom';
 
 const SingleProductPage = props => {
-
+    var Url =''
+    if(window.location.host.includes('localhost')){
+       Url = 'http://localhost:5000'
+    }
+    else{
+       Url = 'https://powerful-garden-71525.herokuapp.com'
+    }
     const history = useHistory()
     const dispatch = useDispatch()
 
@@ -47,7 +53,7 @@ const SingleProductPage = props => {
   
     var img = []
     if(product.images){
-        img =  product.images.map((image,index) => <div key={index}><img style={{backgroundColor:"white"}}   src ={`http://localhost:5000/${image}`} alt="product not found" /></div>)
+        img =  product.images.map((image,index) => <div key={index}><img style={{backgroundColor:"white"}}   src ={`${Url}/${image}`} alt="product not found" /></div>)
     }
 
 
