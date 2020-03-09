@@ -10,7 +10,10 @@ const history = useHistory()
 const [isClicked, setisClicked] = useState(false)
 
 
-  const  onLogout = () => {
+
+   
+
+    const onLogout = () => {
       console.log(history)
         dispatch(logout(history))
     }
@@ -22,12 +25,22 @@ const [isClicked, setisClicked] = useState(false)
 
     let drawerClasses = '';
     if(isClicked){
+       
         drawerClasses = 'open'
-        console.log(drawerClasses)
+        let elm = document.getElementsByTagName('ul')[0].children
+        let i;
+        for (i = 0; i < elm.length; i++) {
+          elm[i].addEventListener('click', ()=>{
+              setisClicked(!isClicked)
+          })
+        }
     }
     else{
         drawerClasses =''
     }
+
+
+
     return (
         <div className="nav">
             <div className="hamMenu" onClick={hamMenu}style={{display: "none"}}>

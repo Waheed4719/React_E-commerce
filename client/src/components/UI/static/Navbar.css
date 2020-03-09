@@ -39,8 +39,8 @@ li:hover{
 }
 .hamMenu div{
     width: 40px;
-    background-color: red;
-    height: 6px;
+    background-color: darkslateblue;
+    height: 5px;
     position: relative;
     margin: 4px;
 

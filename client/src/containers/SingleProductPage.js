@@ -17,7 +17,6 @@ const SingleProductPage = props => {
     const dispatch = useDispatch()
 
     const [product, setProduct] = useState({})
-    const [images, setImages] = useState([])
     const [error, setError] = useState({})
     const product_id = props.match.params.id
     
@@ -28,9 +27,7 @@ const SingleProductPage = props => {
     const getProduct = () =>{
         Axios.get(`/api/products/${product_id}`)
         .then(prod => {
-            
             setProduct(prod.data)
-            setImages(prod.data.images)
            
         })
         .catch(error=>{
