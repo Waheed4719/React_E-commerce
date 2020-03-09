@@ -56,7 +56,7 @@ const express = require('express'),
               .catch(err => console.log(err))
      
               
-     server.listen(port,() => {
+     server.listen(  process.env.PORT||port,() => {
           console.log(`server started on port ${port}`)
       })
 
