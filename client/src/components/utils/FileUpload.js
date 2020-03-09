@@ -4,6 +4,7 @@ import { Icon } from 'antd';
 import Axios from 'axios';
 import './carousel.css'
 function FileUpload(props) {
+    
     var Url =''
     if(window.location.host.includes('localhost')){
        Url = 'http://localhost:5000'

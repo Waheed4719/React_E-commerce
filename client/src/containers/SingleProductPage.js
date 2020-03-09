@@ -10,6 +10,7 @@ import './style.css'
 import { useHistory } from 'react-router-dom';
 
 const SingleProductPage = props => {
+    
     var Url =''
     if(window.location.host.includes('localhost')){
        Url = 'http://localhost:5000'
@@ -17,6 +18,7 @@ const SingleProductPage = props => {
     else{
        Url = 'https://powerful-garden-71525.herokuapp.com'
     }
+
     const history = useHistory()
     const dispatch = useDispatch()
 
