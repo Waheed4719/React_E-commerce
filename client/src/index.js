@@ -18,7 +18,7 @@ import Axios from 'axios'
 const token = localStorage.getItem('auth_token')
 if(token){
     let decode = jwtDecode(token)
-    var user = {}
+    // var user = {}
     setAuthToken(token)
     
     Axios.get(`/api/auth/getCartAndHistory?id=${decode._id}`)

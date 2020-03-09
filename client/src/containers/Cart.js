@@ -34,13 +34,13 @@ const Cart = props=> {
         setCartContent(item)
     }
 
-    const transactionError = () => {
-        console.log('Paypal error')
-    }
+    // const transactionError = () => {
+    //     console.log('Paypal error')
+    // }
 
-    const transactionCanceled = () => {
-        console.log('Transaction canceled')
-    }
+    // const transactionCanceled = () => {
+    //     console.log('Transaction canceled')
+    // }
     
   const hello = cartContent.map((hi,index) => <div key={index}>{hi.title} - {hi.quantity} - {hi.price}</div>)
     return (
