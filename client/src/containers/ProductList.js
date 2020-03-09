@@ -5,12 +5,12 @@ import {Card} from 'antd'
 import ImageSlider from './../../src/components/utils/ImageSlider'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Axios from 'axios'
-import { Redirect, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const { Meta } = Card
  function ProductList  () {
     const [products, setProducts] = useState([{}])
-    const [error, setError] = useState('')
+    // const [error, setError] = useState('')
 
     useEffect(() => {
       getProducts()
@@ -19,6 +19,7 @@ const { Meta } = Card
     const getProducts = () => {
         Axios.get('api/products/getProducts')
         .then(products => {
+            console.log(products.data)
             setProducts(products.data)
         })
         .catch(error => {
@@ -32,9 +33,9 @@ const { Meta } = Card
     
     // <Card  key={index} id= {prod._id} img = {prod.images} title={prod.title} price={prod.price} />
     
-    <Card  key={index} style={{margin: "20px",padding:"5px"}}
+    <Card  key={index} style={{margin: "20px",display:"flex",flexDirection:"column",alignItems:"center",padding:"5px"}}
     hoverable={true}
-    cover={<Link to={'/store/' + prod._id }><ImageSlider images={prod.images} /></Link>}
+    cover={<Link to={'/store/' + prod._id }><ImageSlider style={{width: "100%"}}images={prod.images} /></Link>}
     >
     <Meta
          title={prod.title}

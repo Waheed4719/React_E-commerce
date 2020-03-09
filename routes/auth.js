@@ -1,6 +1,6 @@
 const express = require('express'),
       router = express.Router(),  
-      {Login, Register, Add_To_Cart} = require('./../controllers/authController')
+      {Login, Register, Add_To_Cart,getCartAndHistory} = require('./../controllers/authController')
       multer = require('multer'),
       DIR = './public/uploads',
       auth = require('./../middleware/auth.js'),
@@ -10,7 +10,7 @@ const express = require('express'),
 router.post('/login',Login)
 router.post('/register',Register)
 router.post('/add_to_cart',auth, Add_To_Cart)
-
+router.get('/getCartAndHistory',auth, getCartAndHistory)
 
 
 storage = multer.diskStorage({

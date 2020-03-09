@@ -11,9 +11,15 @@ export const login = (user,history) => dispatch => {
     .then(user=>{
         console.log(user)
         let decode = jwtDecode(user.data.token)
+        decode.cart = user.data.cart
+        decode.history = user.data.history
+        console.log(decode.cart)
+        localStorage.removeItem('admin_token')
        localStorage.setItem('auth_token',user.data.token)
-       localStorage.removeItem('admin_token')
+       
         setAuthToken(user.data.token)
+
+
         dispatch({
             type: Types.SET_USER,
             payload: {

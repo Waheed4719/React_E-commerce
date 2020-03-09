@@ -1,5 +1,5 @@
 import React from 'react'
-import {Icon, Carousel} from 'antd'
+import {Icon} from 'antd'
 
 function Home() {
     return (
@@ -13,8 +13,8 @@ function Home() {
         }}>
 
 
-            <Icon style={{color: "darkslategray",fontSize: "40px"}} type="home" theme="filled"/>
-            <h3 style={{color: "darkslategray"}}>Welcome Home!</h3>
+            <Icon style={{color: "darkslategray",fontSize: "40px"}} type="home" theme="outlined"/>
+            <h3 style={{color: "darkslategray", fontWeight:"lighter"}} >Welcome Home!</h3>
         </div>
     )
 }

@@ -8,21 +8,19 @@ function auth(req,res,next){
         console.log(token)
         var token = token.split(" ");
         token = token[1];
-        jwt.verify(token, 'SECRET', function (err, decoded){
-           
-            if (err){
-                res.status(400).json({msg: 'token is not valid'})  
-            } else {
-                console.log(decoded.role)
-                Admin.findOne({_id: decoded._id,role:decoded.role})
-                .then((req,res)=>{
-                    req.admin = decoded;
-                    next();
-                })
-                .catch(error=> res.status(403).json(error))
-               
+        try{
+            const decoded = jwt.verify(token, 'SECRET');
+            var foundAdmin = {}
+            Admin.findOne({_id: decoded._id,role:decoded.role})
+            .then( user => foundAdmin = user )
+            if(foundAdmin){
+                req.admin = decoded
+                next()
             }
-        });
+        }
+        catch(e){
+            res.status(400).json({error: 'token is not valid'})
+        }
     }
     else{
         res.status(400).json("error")

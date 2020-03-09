@@ -11,6 +11,7 @@ li{
     color: #4c5d7a;;
     font-size: large;
     font-weight: 400 ;
+    
 }
 li:hover{
     color: royalblue;
@@ -53,12 +54,12 @@ li:hover{
     }
 
     .nav li{
-        display: flex;
-        flex-direction: column;
+        display: block;
         color: black;
         padding: 10px;
         margin: 0px;
         font-family: 'montserrat';
+        
     }
     .nav ul{
         margin: 0px;
@@ -83,7 +84,7 @@ li:hover{
         width: 100%;
         margin: 0px;
         padding: 10px;
-        
+        display:inline-block
     }
 
    

@@ -10,6 +10,8 @@ module.exports = {
     },
 
     addProduct(req,res){
+
+        console.log(req.admin)
         const {title, price, images, description} = req.body
         const newProd = new Product()
         newProd.title = title
@@ -28,7 +30,7 @@ module.exports = {
         let id = req.params.id
         Product.findOne({_id:id})
         .then(product=>{
-            console.log(product)
+            
             res.status(200).json(product)
         })
         .catch(error=>{

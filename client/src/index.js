@@ -9,7 +9,7 @@ import store from './store'
 import jwtDecode from 'jwt-decode'
 import * as Types from './store/actions/types'
 import setAuthToken from './utils/setAuthToken'
-
+import Axios from 'axios'
 
 
 
@@ -18,14 +18,24 @@ import setAuthToken from './utils/setAuthToken'
 const token = localStorage.getItem('auth_token')
 if(token){
     let decode = jwtDecode(token)
-   
+    var user = {}
     setAuthToken(token)
-    store.dispatch({
-        type: Types.SET_USER,
-        payload: {
-            user: decode
-        }
+    
+    Axios.get(`/api/auth/getCartAndHistory?id=${decode._id}`)
+    .then(user => {
+        
+        decode.cart= user.data.cart
+        decode.history = user.data.history
+        store.dispatch({
+            type: Types.SET_USER,
+            payload: {
+                user: decode
+            }
+        })
     })
+   
+    
+   
 }
 const admintoken = localStorage.getItem('admin_token')
 if(admintoken){

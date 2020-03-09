@@ -4,7 +4,7 @@ const express = require('express'),
       db = require('./config/keys').mongoURI,
       app = express(),
       port = process.env.port || 5000,
-
+      path = require('path'),
       multer = require('multer'),
       passport = require('passport'),
       socketio = require('socket.io'),
@@ -36,7 +36,17 @@ const express = require('express'),
     //   app.use(checkUserType)
     //   app.use(passport.initialize())
         
-      DIR = './public/uploads'
+
+
+    // Serve static assets if in production
+    if(process.env.NODE_ENV === 'production'){
+      // Set Static folder
+
+      app.use(express.static('client/build'));
+      app.get('*', (req,res) => {
+        res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+      });
+    } 
 
  
       mongoose.set('useCreateIndex', true);

@@ -17,6 +17,9 @@ import Home from './pages/Home';
 import {message} from 'antd'
 import UploadProduct from './pages/Admin/UploadProduct';
 import GetUsers from './pages/Admin/GetUsers';
+import Cart from './containers/Cart'
+
+
 library.add(fab, fas)
 message.config({
   maxCount: 1,
@@ -29,6 +32,7 @@ function App() {
 <Navbar/>
 <Switch>
 <Route exact path="/"  component={Home}/>
+<Route exact path="/cart"  component={Cart}/>
 <Route exact path="/store"  component={ProductList}/>
 <Route exact path="/store/:id"  component={SingleProduct}/>
 <Route exact path="/admin"  component={AdminLogin}/>

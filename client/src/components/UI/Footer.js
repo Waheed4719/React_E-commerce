@@ -18,9 +18,9 @@ function Footer() {
               </div>
 
                 <div><h5>Contact</h5>
-                <ul><li><FontAwesomeIcon icon={['fas','envelope']} size="md" className="mx-3 my-1"/> test1234@gmail.com</li>
+                <ul><li><FontAwesomeIcon icon={['fas','envelope']}  size="1x" className="mx-3 my-1"/> test1234@gmail.com</li>
                 
-                <li><FontAwesomeIcon icon={['fas','phone']} size="md" className="mx-3 my-1"/>0123456789</li>
+                <li><FontAwesomeIcon icon={['fas','phone']} size="1x" className="mx-3 my-1"/>0123456789</li>
                 
                 </ul></div>
 

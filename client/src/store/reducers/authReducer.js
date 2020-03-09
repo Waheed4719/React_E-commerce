@@ -10,9 +10,10 @@ const authReducer = (state=init,action) =>{
     switch(action.type){
         case Types.SET_USER: {
             return{
+                ...state,
                 user: action.payload.user,
                 isAuthenticated: Object.keys(action.payload.user).length !== 0,
-                errors: {}
+                
             }
             
         }
@@ -29,8 +30,11 @@ const authReducer = (state=init,action) =>{
         }
         case Types.ADD_TO_CART: {
             return {
-                ...state, 
-                cart_data: action.payload.cart_data
+                ...state, user:{
+                    ...state.user,
+                    cart: action.payload.cart_data
+                }
+                
 
             }
         }

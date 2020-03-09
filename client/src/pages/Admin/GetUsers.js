@@ -9,7 +9,7 @@ function GetUsers(props) {
 
     useEffect(()=>{
      getUsers()
-    }, [''])
+    }, [])
         
     const getUsers = () => {
         Axios.get('/api/users')

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Axios from 'axios'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import ImageGallery from './sections/ProductImage'
 import { Button } from 'antd';
 import {connect, useDispatch} from 'react-redux'
@@ -62,7 +63,7 @@ const SingleProductPage = props => {
              <p>Price: ${product.price}</p>
              <p>Description: {product.description}</p>
 
-             <Button onClick={()=>add_To_Cart(product._id)} style={{width:"100%"}}>Add To Cart</Button>
+             <Button onClick={()=>add_To_Cart(product._id)} style={{width:"100%"}}  ><FontAwesomeIcon icon={['fas','shopping-cart']} size="lg" className="mx-2 "/>Add To Cart</Button>
             </div>
             
         </div>

@@ -41,11 +41,13 @@ const [isClicked, setisClicked] = useState(false)
             {
                 props.auth.isAuthenticated?<li style={{cursor:"pointer"}} onClick={onLogout}>Logout</li>:<Link to='/login'><li >Login</li></Link>
             }
-            
+           
            
             <Link to="/"><li >Home</li></Link>
             <Link to="/store"><li >Store</li></Link>
-            <li >Documentation</li>
+            <Link to='/cart'><li style={{cursor:"pointer",}}><FontAwesomeIcon icon={['fas','shopping-cart']} size="1x" /><div className="p-1 mx-1 " 
+            style={{fontSize:"14px",margin:"auto", display:"inline-block",width:"25px",height:"25px", backgroundColor:"dimgray",borderRadius:"20px",color:"white",fontWeight:"bolder"}}>{props.auth.user.cart?
+           Object.keys(props.auth.user.cart).length:0}</div></li></Link>
             <li >About</li>
            
             </ul>
