@@ -51,7 +51,7 @@ const express = require('express'),
  
       mongoose.set('useCreateIndex', true);
       mongoose.set('useFindAndModify',false);
-      mongoose.connect(db, { useNewUrlParser: true,  useUnifiedTopology: true  })
+      mongoose.connect(process.env.MONGODB_URI || db, { useNewUrlParser: true,  useUnifiedTopology: true  })
               .then(console.log('Connected to MongoDB')) 
               .catch(err => console.log(err))
      
