@@ -3,7 +3,7 @@ const express = require('express'),
       mongoose = require('mongoose'),
       db = require('./config/keys').mongoURI,
       app = express(),
-      port = process.env.port || 5000,
+      port = process.env.PORT || 5000,
       path = require('path'),
       multer = require('multer'),
       passport = require('passport'),
@@ -56,7 +56,7 @@ const express = require('express'),
               .catch(err => console.log(err))
      
               
-     server.listen(  process.env.PORT||port,() => {
+     server.listen(port,() => {
           console.log(`server started on port ${port}`)
       })
 
