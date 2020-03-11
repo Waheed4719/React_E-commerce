@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 const { Meta } = Card
  function ProductList  () {
     const [products, setProducts] = useState([{}])
-    // const [error, setError] = useState('')
+    const [error, setError] = useState('')
 
     useEffect(() => {
       getProducts()
@@ -19,11 +19,11 @@ const { Meta } = Card
     const getProducts = () => {
         Axios.get('api/products/getProducts')
         .then(products => {
-            console.log(products.data)
+            
             setProducts(products.data)
         })
         .catch(error => {
-            console.log(error)
+            setError(error)
         })
     }
 
@@ -31,11 +31,11 @@ const { Meta } = Card
     const card = products.map((prod, index) => 
     
     
-    // <Card  key={index} id= {prod._id} img = {prod.images} title={prod.title} price={prod.price} />
+    
     
     <Card  key={index} style={{margin: "20px",display:"flex",flexDirection:"column",alignItems:"center",padding:"5px"}}
     hoverable={true}
-    cover={<Link to={'/store/' + prod._id }><ImageSlider style={{width: "100%"}}images={prod.images} /></Link>}
+    cover={<Link to={'/store/' + prod._id }><ImageSlider style={{width: "100%"}} images={prod.images} /></Link>}
     >
     <Meta
          title={prod.title}
@@ -57,6 +57,7 @@ const { Meta } = Card
           
         }}>
             <h3 style={{margin:"40px",color: "darkslateblue"}}>This is the products page</h3>
+            {error?<p>{error}</p> :''}
             {products?'':
             <FontAwesomeIcon icon={['fas','box-open']} size="lg" style={{fontSize: "60px"}} className="mx-3"/>}
         <div style={{display: "flex",flexDirection:"row",flexWrap:"wrap",justifyContent:"center",margin:"auto",flex: "2 1 auto"}}>

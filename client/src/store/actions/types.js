@@ -11,3 +11,5 @@ export const SET_ADMIN = "SET_ADMIN"
 export const ADMINS_ERROR = "ADMINS_ERROR"
 export const UPLOAD_PRODUCT = "UPLOAD_PRODUCT"
 
+//Payment Types
+export const ON_SUCCESS_BUY_USER = "ON_SUCCESS_BUY_USER"

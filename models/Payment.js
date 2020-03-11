@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'),
+      schema = mongoose.Schema;
 
-const paymentSchema = mongoose.Schema({
+const paymentSchema = new schema({
     user: {
         type: Array,
         default: []
@@ -17,7 +18,5 @@ const paymentSchema = mongoose.Schema({
 
 }, { timestamps: true })
 
+module.exports =  Payment  = mongoose.model('Payment', paymentSchema)
 
-const Payment = mongoose.model('Payment', paymentSchema);
-
-module.exports = { Payment }

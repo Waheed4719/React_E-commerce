@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import ImageGallery from 'react-image-gallery'
 
 function ProductImage(props) {
-    var Url = window.location.protocol + '//' + window.location.host
+   
     const [Images, setImages] = useState([])
 
     useEffect(()=>{
-        
+        var Url = window.location.protocol + '//' + window.location.host
         if(props.detail.images && props.detail.images.length>0){
             let images = [];
       props.detail.images && props.detail.images.map(item =>{
@@ -16,6 +16,7 @@ function ProductImage(props) {
                 thumbnail: `${Url}/${item}`
             })
         })
+        
         setImages(images)
     }
 

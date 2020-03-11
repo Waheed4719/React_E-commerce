@@ -23,7 +23,7 @@ const express = require('express'),
       app.use('/api/products',products)
       app.use('/api/admin',admin)
         
-
+      const Payment = require('./models/Payment')
 
     // Serve static assets if in production
     if(process.env.NODE_ENV === 'production'){
@@ -43,7 +43,8 @@ const express = require('express'),
       mongoose.connect(process.env.MONGODB_URI || db, { useNewUrlParser: true,  useUnifiedTopology: true  })
               .then(console.log('Connected to MongoDB')) 
               .catch(err => console.log(err))
-     
+
+            
               
      server.listen(port,() => {
           console.log(`server started on port ${port}`)

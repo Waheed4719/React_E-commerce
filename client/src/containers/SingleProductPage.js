@@ -17,24 +17,26 @@ const SingleProductPage = props => {
     const dispatch = useDispatch()
 
     const [product, setProduct] = useState({})
-    const [error, setError] = useState({})
-    const product_id = props.match.params.id
+    const [error, setError] = useState()
+    
     
     useEffect(() =>{
+        const product_id = props.match.params.id
+        const getProduct = () =>{
+            Axios.get(`/api/products/${product_id}`)
+            .then(prod => {
+                setProduct(prod.data)
+               
+            })
+            .catch(error=>{
+                console.log(error)
+                setError(error)
+            })
+        }
         getProduct()
-    },[])
+    },[props])
 
-    const getProduct = () =>{
-        Axios.get(`/api/products/${product_id}`)
-        .then(prod => {
-            setProduct(prod.data)
-           
-        })
-        .catch(error=>{
-            console.log(error)
-            setError(error)
-        })
-    }
+ 
 
     const add_To_Cart = id => {
         let quantity = 2
@@ -53,7 +55,7 @@ const SingleProductPage = props => {
     return (
         <div className="spv" style={{display: "flex",flexDirection:"row",justifyContent:"center",paddingTop:"50px"}}>
             <div style={{maxWidth:"500px",height:"auto",backgroundColor:"white",margin:"20px 20px"}}>
-        
+            {error? <p>{error}</p> : ''}
             <ImageGallery  detail = {product} />
 
             </div>

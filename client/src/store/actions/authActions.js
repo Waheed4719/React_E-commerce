@@ -13,7 +13,7 @@ export const login = (user,history) => dispatch => {
         let decode = jwtDecode(user.data.token)
         decode.cart = user.data.cart
         decode.history = user.data.history
-        console.log(decode.cart)
+        
         localStorage.removeItem('admin_token')
        localStorage.setItem('auth_token',user.data.token)
        
@@ -34,7 +34,7 @@ export const login = (user,history) => dispatch => {
     })
     .catch(error=>{
         if(error){
-            console.log(error.response.data)
+            
             dispatch({
                 type: Types.USERS_ERROR,
                 payload: {
@@ -51,7 +51,7 @@ export const login = (user,history) => dispatch => {
 export const register = (user, history) => dispatch => {
     Axios.post('/api/auth/register',user)
     .then(user=>{
-        console.log(user)
+       
        
         dispatch({
             type: Types.CREATE_USER,
@@ -94,13 +94,14 @@ export const addToCart = (data,history) => dispatch =>{
     Axios.post('/api/auth/add_to_cart',data)
     .then(items =>{
         
-        console.log(items.data)
+        
         dispatch({
             type: Types.ADD_TO_CART, 
             payload: {
                 cart_data:items.data
         }
     })
+    message.success('Item added to cart')
     })
     .catch(error =>{
         console.log(error.response.data)
@@ -112,4 +113,18 @@ export const addToCart = (data,history) => dispatch =>{
         })
     })
 
+}
+
+export const  onSuccessBuy = (data, history) =>  {
+    console.log(data)
+    return {
+        type: Types.ON_SUCCESS_BUY_USER,
+        payload: {
+            cart: data.cart,
+            history: data.history
+    
+        }
+        }
+   
+   
 }

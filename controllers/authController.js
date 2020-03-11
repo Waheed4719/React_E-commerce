@@ -2,8 +2,10 @@ const jwt = require('jsonwebtoken'),
       loginValidator = require('./../validators/loginValidator'),
       registerValidator = require('./../validators/registerValidator'),
       User = require('./../models/User'),
-      bcrypt = require('bcrypt');
-      
+      Payment = require('./../models/Payment'),
+      Product = require('./../models/Product')
+      bcrypt = require('bcrypt'),
+      async = require('async')
 
 module.exports = {
 
@@ -103,13 +105,23 @@ module.exports = {
                             }
                         )
                     } else {
+                        var prod_price = ''
+                        Product.findOne({_id: prod_id})
+                        .then(prod => {
+                            prod_price = prod.price
+                            prod_title = prod.title
+                           
+                       
+                        console.log(prod_price)
                         User.findOneAndUpdate(
                             {_id: req.user._id},
                             {
                                 $push: {
                                     cart: {
                                         id: prod_id,
+                                        title: prod_title,
                                         quantity: 1,
+                                        price: prod_price,
                                         date: Date.now()
                                     }
                                 }
@@ -128,6 +140,8 @@ module.exports = {
                                 
                             }
                         )
+
+                    }) 
                     }
 
 
@@ -140,7 +154,92 @@ module.exports = {
                 User.findOne({_id: id})
                 .then(user=>res.status(200).json(user))
                 .catch(error=>res.status(404).json(error))
+            },
+
+
+
+            successfulPurchase(req, res){
+                let history = [];
+                let transactionData = {};
+                console.log(req.user)
+                console.log(req.body)
+                //1.Put brief Payment Information inside User Collection 
+                req.body.cartDetail.forEach((item) => {
+                    history.push({
+                        dateOfPurchase: Date.now(),
+                        name: item.title,
+                        id: item.id,
+                        price: item.price,
+                        quantity: item.quantity,
+                        paymentId: req.body.paymentData.paymentID
+                    })
+                })
+            
+                //2.Put Payment Information that come from Paypal into Payment Collection 
+                transactionData.user = {
+                    id: req.user._id,
+                    name: req.user.name,
+                    email: req.user.email
+                }
+            
+                transactionData.data = req.body.paymentData;
+                transactionData.product = history
+            
+            
+                User.findOneAndUpdate(
+                    { _id: req.user._id },
+                    { $push: { history: history }, $set: { cart: [] } },
+                    { new: true },
+                    (err, user) => {
+                        if (err) return res.json({ success: false, err });
+            
+                        
+                        const payment = new Payment(transactionData)
+                        
+                        payment.save((err, doc) => {
+                            if (err) return res.json({ success: false, err });
+            
+                            //3. Increase the amount of number for the sold information 
+            
+                            //first We need to know how many product were sold in this transaction for 
+                            // each of products
+            
+                            let products = [];
+                            doc.product.forEach(item => {
+                                products.push({ id: item.id, quantity: item.quantity })
+                            })
+            
+                            // first Item    quantity 2
+                            // second Item  quantity 3
+            
+                            async.eachSeries(products, (item, callback) => {
+                                Product.update(
+                                    { _id: item.id },
+                                    {
+                                        $inc: {
+                                            "sold": item.quantity
+                                        }
+                                    },
+                                    { new: false },
+                                    callback
+                                )
+                            }, (err) => {
+                                if (err) return res.json({ success: false, err })
+                                res.status(200).json({
+                                    success: true,
+                                    cart: user.cart,
+                                    history: user.history,
+                                    cartDetail: []
+                                })
+                            })
+            
+                        })
+                    }
+                )
             }
+            
+
+
          
 
 

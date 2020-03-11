@@ -1,0 +1,43 @@
+td{
+    margin: 30px;
+    padding: 30px;
+}
+.cart_img{
+    width: 80px;
+    padding: 10px;
+     border:  1px solid darkslategray
+    }
+    table{
+        display: flex;
+        width: 600px;
+        justify-content: center;
+        align-items: center;
+        margin:auto;
+        padding: auto;
+    }
+
+    tbody{
+        margin: auto;
+        max-width: 100%;
+        border: 1px solid lavender;
+    }
+    .cart-page{
+        font-family: 'Montserrat';
+        padding-top: 20px;
+    }
+    
+@media only screen and (max-width: 500px){
+   
+   
+    .cart-page{
+        padding-top: 100px;
+    }
+
+    table{
+        max-width: 100% !important;
+    }
+    td{
+        margin: 5px;
+        padding: 5px;
+    }
+}
