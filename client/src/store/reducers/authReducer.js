@@ -38,6 +38,14 @@ const authReducer = (state=init,action) =>{
 
             }
         }
+        case Types.REMOVE_CART_ITEM_USER :{
+            return {
+                ...state, user: {
+                    ...state.user,
+                    cart: action.payload.cart_data
+                }
+            }
+        }
 
         case Types.ON_SUCCESS_BUY_USER: {
             return {

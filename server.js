@@ -23,7 +23,7 @@ const express = require('express'),
       app.use('/api/products',products)
       app.use('/api/admin',admin)
         
-      const Payment = require('./models/Payment')
+
 
     // Serve static assets if in production
     if(process.env.NODE_ENV === 'production'){

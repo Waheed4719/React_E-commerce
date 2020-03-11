@@ -9,7 +9,7 @@ export const login = (user,history) => dispatch => {
 
     Axios.post('/api/auth/login',user)
     .then(user=>{
-        console.log(user)
+        
         let decode = jwtDecode(user.data.token)
         decode.cart = user.data.cart
         decode.history = user.data.history
@@ -114,6 +114,27 @@ export const addToCart = (data,history) => dispatch =>{
     })
 
 }
+
+
+
+export const removeCartItem= (id, history) => dispatch => {
+    Axios.get(`/api/auth/removeFromCart?_id=${id}`)
+        .then(json => {
+            
+            const cart_data = json.data
+            history.go('/cart')
+            dispatch({
+                type: Types.REMOVE_CART_ITEM_USER,
+                payload: cart_data
+            }) 
+        });
+
+  
+}
+
+
+
+
 
 export const  onSuccessBuy = (data, history) =>  {
     console.log(data)

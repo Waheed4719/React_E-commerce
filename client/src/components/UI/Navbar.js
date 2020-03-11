@@ -61,6 +61,8 @@ const [isClicked, setisClicked] = useState(false)
             <Link to='/cart'><li style={{cursor:"pointer",}}><FontAwesomeIcon icon={['fas','shopping-cart']} size="1x" /><div className="p-1 mx-1 " 
             style={{fontSize:"14px",margin:"auto", display:"inline-block",width:"25px",height:"25px", backgroundColor:"dimgray",borderRadius:"20px",color:"white",fontWeight:"bolder"}}>{props.auth.user.cart?
            Object.keys(props.auth.user.cart).length:0}</div></li></Link>
+
+           
             <li >About</li>
            
             </ul>

@@ -1,6 +1,7 @@
-td{
-    margin: 30px;
-    padding: 30px;
+td,th{
+    width: 180px;
+    padding: 10px;
+    border: 1px solid lavender;
 }
 .cart_img{
     width: 80px;
@@ -8,8 +9,9 @@ td{
      border:  1px solid darkslategray
     }
     table{
+        
         display: flex;
-        width: 600px;
+        width: auto;
         justify-content: center;
         align-items: center;
         margin:auto;
@@ -17,8 +19,9 @@ td{
     }
 
     tbody{
-        margin: auto;
+        /* margin: auto; */
         max-width: 100%;
+        width: auto;
         border: 1px solid lavender;
     }
     .cart-page{
@@ -28,12 +31,18 @@ td{
     
 @media only screen and (max-width: 500px){
    
-   
+    tbody{
+        /* margin: auto; */
+        overflow: scroll;
+        width: auto;
+        border: 1px solid lavender;
+    }
     .cart-page{
         padding-top: 100px;
     }
 
     table{
+        width: auto;
         max-width: 100% !important;
     }
     td{

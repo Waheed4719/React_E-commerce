@@ -3,9 +3,9 @@ import Axios from 'axios'
 import { connect } from 'react-redux'
 import './static/cart.css'
 import Paypal from './../components/utils/Paypal';
-import { onSuccessBuy } from './../store/actions/authActions'
+import { removeCartItem ,onSuccessBuy } from './../store/actions/authActions'
 import {useDispatch} from 'react-redux'
-import { Result, Empty } from 'antd';
+import { Result, Empty, Button } from 'antd';
 
 
 const Cart = props=> {
@@ -22,6 +22,7 @@ const Cart = props=> {
 
         const cartItems = [];
         const cart = props.auth.user.cart
+        console.log(props.auth.user.cart)
         if (props.auth.user && props.auth.user.cart) {
             if (cart.length > 0) {
                 cart.forEach(item => {
@@ -37,6 +38,8 @@ const Cart = props=> {
                 });   
             }
         }
+        
+
     },[props.auth.user])
 
 
@@ -56,7 +59,7 @@ const Cart = props=> {
         cart.map(item => {
             total += parseInt(item.price, 10) * item.quantity
         });
-
+        console.log(total)
         setTotal(total)
         setShowTotal(true)
     }
@@ -66,10 +69,19 @@ const Cart = props=> {
         setCartContent(item)
     }
 
-    const transactionSuccess = (data) => {
+
+    const removeFromCart = (productId) => {
+        
+        dispatch(removeCartItem(productId, props.history))
     
+        console.log(props.auth.user.cart)
+        console.log(props.auth)
+        
+    }
 
 
+    const transactionSuccess = (data) => {
+ 
         let variables = {
             cartDetail: props.auth.user.cart, paymentData: data
         }
@@ -86,10 +98,10 @@ const Cart = props=> {
                         history: response.data.history,
                         cartDetail: response.data.cartDetail
                     },props.history))
-                    
-                    // props.history.go('/cart')
-                    // message.success("Successfully Purchased Items")
+
                     setCartContent("")
+                    
+                    
 
                 } else {
                     alert('Failed to buy it')
@@ -104,24 +116,27 @@ const Cart = props=> {
     const transactionCanceled = () => {
         console.log('Transaction canceled')
     }
+
+    
     var cartBlock = ''
     if(cartContent){
          cartBlock = cartContent.map((hi,index) => 
          <tr key={index}>
              {hi.images? <td style={{padding: "10px"}}><img className="cart_img" alt="product_image"  src ={`${Url}/${hi.images[0]}`} /></td>:'' }
-             <td><strong>{hi.title}</strong></td><td>{hi.quantity}</td><td>{hi.price}</td><td>{hi.price}</td></tr>)
+             <td><strong>{hi.title}</strong></td><td>{hi.quantity}</td><td>{hi.price}</td><td><Button onClick={() => removeFromCart(hi._id)}>Remove</Button></td></tr>)
     }
  
     return (
         
-        <div class="cart-page" >
+        <div className="cart-page" >
             <h3>This is the Cart page</h3>
+            {props.auth.user.cart? console.log(props.auth.user.cart): ''}
           <table >
               <tbody>
-              <tr><th>Image</th>
-                  <th>Name</th>
-                  <th>Quantity</th>
-                  <th>Price</th>
+              <tr><th>Product Image</th>
+                  <th>Product Name</th>
+                  <th>Product Quantity</th>
+                  <th>Product Price</th>
                   <th>Action</th></tr>
               {cartBlock}</tbody>
              
@@ -167,6 +182,7 @@ const Cart = props=> {
 
 const mapStateToProps = state => ({
     auth: state.auth
+    
 })
 
-export default connect(mapStateToProps)(Cart)
+export default connect(mapStateToProps,{removeCartItem})(Cart)

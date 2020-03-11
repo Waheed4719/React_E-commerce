@@ -236,6 +236,30 @@ module.exports = {
                         })
                     }
                 )
+            },
+
+            removeFromCart(req, res){
+
+                User.findOneAndUpdate(
+                    { _id: req.user._id },
+                    {
+                        "$pull":
+                            { "cart": { "id": req.query._id } }
+                    },
+                    (err, userInfo) => {
+                      User.findOne({_id: req.user._id})
+                        .then(user => {
+                            console.log(user.cart)
+                            res.status(200).json({
+                                    
+                                cart: user.cart
+                            })
+                        })
+
+                               
+                            
+                    }
+                )
             }
             
 

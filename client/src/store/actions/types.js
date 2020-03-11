@@ -13,3 +13,4 @@ export const UPLOAD_PRODUCT = "UPLOAD_PRODUCT"
 
 //Payment Types
 export const ON_SUCCESS_BUY_USER = "ON_SUCCESS_BUY_USER"
+export const REMOVE_CART_ITEM_USER = "REMOVE_CART_ITEM_USER"
