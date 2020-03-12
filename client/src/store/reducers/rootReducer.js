@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux'
-import authReducer from './authReducer'
-import adminReducer from './adminReducer'
+import auth from './authReducer'
+import admin from './adminReducer'
 
 
  const rootReducer = combineReducers({
-     auth: authReducer,
-     admin:adminReducer,
+     auth,
+     admin,
   
 })
 

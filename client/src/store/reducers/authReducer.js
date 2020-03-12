@@ -42,7 +42,7 @@ const authReducer = (state=init,action) =>{
             return {
                 ...state, user: {
                     ...state.user,
-                    cart: action.payload.cart_data
+                    cart: action.payload.cart
                 }
             }
         }
