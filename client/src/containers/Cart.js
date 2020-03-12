@@ -34,6 +34,7 @@ function Cart(props){
                         cartItems.push(mergedObj)
                         if(cartItems.length  === cart.length){
                             setCart(cartItems) 
+                            calculateTotal(auth.user.cart)
                         }
                     }) 
                 });   
@@ -49,16 +50,6 @@ function Cart(props){
     
  
 
-
-
-    useEffect(() => {
-
-        if (auth.user.cart && auth.user.cart.length > 0) {
-            calculateTotal(auth.user.cart)
-        }
-
-
-    }, [auth.user.cart])
 
     const calculateTotal = (cart) => {
         let total = 0;
