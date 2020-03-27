@@ -70,7 +70,7 @@ function Cart(props){
 
     const removeFromCart = (productId) => {
         
-        dispatch(removeCartItem(productId, props.history))
+        dispatch(removeCartItem(productId))
 
     }
 

@@ -117,7 +117,7 @@ export const addToCart = (data,history) => dispatch =>{
 
 
 
-export const removeCartItem= (id, history) => dispatch => {
+export const removeCartItem= id => dispatch => {
     
     Axios.get(`/api/auth/removeFromCart?_id=${id}`)
         .then(json => {
@@ -127,6 +127,10 @@ export const removeCartItem= (id, history) => dispatch => {
                 type: Types.REMOVE_CART_ITEM_USER,
                 payload: cart
             })
+
+            message.success('Removed an Item')
+         
+            
         });
 
   

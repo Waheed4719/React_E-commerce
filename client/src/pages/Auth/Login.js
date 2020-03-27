@@ -57,13 +57,13 @@ export class Login extends Component {
             <div className=" cont "  >
                 
                 <div className="d-log">
-                <img className="react" src = {logo} alt= "React Logo"/>  
-                    <div className="buttons">
+                {/* <img className="react" src = {logo} alt= "React Logo"/>   */}
+                    {/* <div className="buttons">
 
 
                         <button className="S-in active auth">Sign-In</button>
                     <Link to="/register"><button className="S-up auth">Sign-Up</button></Link>
-                    </div>
+                    </div> */}
                
                 <h2 className="m-2 ">Sign In</h2>
                 
@@ -79,7 +79,7 @@ export class Login extends Component {
                     <FontAwesomeIcon icon={['fab','github']} size="lg" className="mx-2 icon"/>
                     </div>
                     
-                    <button onClick={this.onSubmit} className="btn btn-outline-danger m-3 ">Login</button>
+                    <button className="btn-outline" onClick={this.onSubmit} >Login</button>
                 </div>
                 
                 

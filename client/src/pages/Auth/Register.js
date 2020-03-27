@@ -79,8 +79,7 @@ constructor(props) {
             <div>
                  <div className=" cont "  >
                 <div className="d-log">
-                <img className="react" src = {logo} alt= "React Logo"/>  
-                    <div className="buttons"><Link to="/login"><button className="S-in auth">Sign-In</button></Link><button className=" S-up auth active">Sign-Up</button></div>
+              
                
                 <h2 className="m-2 ">Sign Up</h2>
                 <input name="name" placeholder="Name" className="form-control m-2 " onChange={this.inputChangeHandler}/>
@@ -91,7 +90,7 @@ constructor(props) {
                     {this.state.error.pass? <small style={{color: "red",marginBottom:"5px"}}>* {this.state.error.pass}</small>:''}
                     <input name="passConfirm" placeholder="Password-confirmation" className="form-control m-2 " value={this.state.passConfirm} onChange={this.inputChangeHandler}/>
                     <input type="file" className="m-3" onChange={this.onFileChange}/>
-                    <button onClick={this.onSubmit} className="btn btn-outline-danger m-3 ">Sign Up</button>
+                    <button className="btn-outline" onClick={this.onSubmit} >Login</button>
                 </div>
                 
                 

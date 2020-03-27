@@ -28,57 +28,34 @@
 .d-log > input {
     width: 300px;
 }
-.d-log> a, .d-log > button {
-    color: darkslateblue !important;
-}
 
-.auth:hover{
-    background-color: darkslateblue;
-}
-.buttons >.active {
-    background-color: dodgerblue;
-}
 
-.buttons{
-    margin-bottom: 20px;
-    
+.btn-outline{
+    display: block;
+    border: 1px solid gainsboro;
+    width: 100px;
+    text-align: center;
+    padding: 0px 15px;
+    background-color: #20B6ff;
+    color: white;
+    line-height: 40px;
+    height: 40px;
+    width: 120px;
+    border-radius: 6px;
 }
 
 .btn-outline-danger:hover {
     color: white !important;
 }
 
-.buttons button{
-    color: white;
-    
-    background-color: dimgray;
-    padding: 5px 25px;
-    border-radius: 6px;
-    border-width: thin;
-    
-}
-
-.buttons> button:nth-child(1){
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    
-   
-}
-.buttons a>button{
-   
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    
-    margin-left: 0px;
-}
 
 .icon:hover{
 color: dodgerblue;
 }
 
 .d-log input{
-    border: none;
-    border-bottom: #EEE 3px solid;
+    border: 1px solid gainsboro;
+    
     font-size: 15px;
     font-family: 'montserrat',sans-serif;
 }
@@ -87,21 +64,3 @@ input[type=file]{
     border: none;
 }
 
-.react {
-    animation: App-logo-spin infinite 5s linear;
-    width:100%;
-   transition: transform 1.3s ease-in;
-   margin-bottom: 20px;
-  margin:0px;
-  padding: 0px;
-  z-index: -1;
-    
- }
-@keyframes App-logo-spin {
-from {
-      transform: rotate(0deg);
-}
-to {
-      transform: rotate(360deg);
-}
-  }
