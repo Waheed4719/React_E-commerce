@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import {Link,Redirect} from 'react-router-dom'
 import {login} from '../../store/actions/authActions'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import logo from './../../logo.svg'
 import './logReg.css'
 export class Login extends Component {
     constructor(props) {

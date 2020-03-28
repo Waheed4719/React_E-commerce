@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import './style.css'
-// import Card from './../components/Cards/Card.js'
 import {Card} from 'antd'
 import ImageSlider from './../../src/components/utils/ImageSlider'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
