@@ -1,0 +1,30 @@
+
+.fullscreen{
+    background-color: none;
+}
+.image-gallery-image{
+    height: 460px;
+}
+.image-gallery.fullscreen-modal{
+    height: 500px;
+    margin:auto;
+    width: 80%;
+    /* background-color: rgba(0, 0, 0, 0.5) !important; */
+}
+.fullscreen .image-gallery-image{
+    width: 50%;
+}
+.fullscreen-modal .image-gallery-content ,.fullscreen-modal{
+    background-color:rgba(	220	,220,	220, 0.4) !important;
+}
+
+@media only screen and (max-width: 600px){
+    .fullscreen .image-gallery-image{
+        width: 80%;
+    }
+    .image-gallery.fullscreen-modal{
+        height: 500px;
+        width: 100%;
+        margin:auto;
+    }
+}

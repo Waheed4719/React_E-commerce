@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ImageGallery from 'react-image-gallery'
+import './style.css'
 
 function ProductImage(props) {
    
@@ -24,7 +25,7 @@ function ProductImage(props) {
     
     return (
         <div>
-            <ImageGallery  items ={Images} />
+            <ImageGallery  useBrowserFullscreen = {false} items ={Images} />
         </div>
     )
 }
