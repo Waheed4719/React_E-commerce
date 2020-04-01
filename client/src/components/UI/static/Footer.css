@@ -29,9 +29,14 @@ text-align: center;
 align-self: start;
 
 }
+footer>div:nth-child(1){
+    justify-content: center;
+    align-items: center;
+}
 footer>div:nth-child(1)>ul{
     display:flex;
     flex-direction: row;
+    
     margin:0;
 }
 footer h5{

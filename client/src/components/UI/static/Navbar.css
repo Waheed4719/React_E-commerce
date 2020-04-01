@@ -3,6 +3,7 @@ ul{
     display: block;
     margin: auto;
     padding: 10px;
+    width: fit-content;
 }
 li{
     display: inline-block;
@@ -18,7 +19,10 @@ li:hover{
 }
 .nav{
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
+    
+    justify-content: center;
+    align-items: center;
     width: 100%;
     text-align: center;
     background-color: #FFFFFF;
@@ -26,30 +30,88 @@ li:hover{
     font-family: "montserrat";
     
 }
-
+/* 
 .hamMenu{
     padding: 5px;
     margin: 0px;
     display: flex;
     justify-content: center;
-    width: max-content;
+    width: fit-content;
     background-color: white;
-    z-index: 200;
-    /* position: fixed; */
+    z-index: 3;
+    
 }
 .hamMenu div{
-    width: 40px;
-    background-color: darkslateblue;
-    height: 5px;
+    width: 35px;
+    background-color: darkslategray;
+    height: 4px;
     position: relative;
-    margin: 4px;
-
-
+    margin: 5px;
+} */
+.ham{
+    height: 52px;
 }
+.nav-icon {
+    height: 40px;
+    width: 40px;
+    padding-top:10px;
+    display: flex;
+    flex-direction: column;
+    margin: 5px 15px;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+
+
+
+.nav-icon::before,
+.nav-icon::after{
+    display:block;
+    height: 2px;
+    width: 20px;
+    content: '';
+    border-radius: 6px;
+    background-color: goldenrod;
+    margin: 3px 0px;
+    transition: .2s ease-in-out;
+}
+.nav-icon:before{
+    transform: translateY(4px) rotate(135deg) translateX(-8px);
+}
+.nav-icon::after{
+    transform: translateY(-4px) rotate(-135deg) translateX(8px);
+}
+
+.ni{
+    padding-top: 0px;
+}
+.ni:before,.ni:after{
+    width:25px;
+}
+
+.ni:before {
+    transform: translateY(4px) rotate(-135deg);
+}
+.ni:after {
+    transform: translateY(-4px) rotate(135deg);
+}
+
+.mobile .brand a{
+    line-height: 52px;
+    font-size: 20px;
+    display: none;
+}
+
+
+
 @media only screen and (max-width : 452px){
     .nav{
         position: fixed;
-        z-index: 900;
+        z-index: 4;
+        align-items: flex-start;
+        flex-direction: column;
         
     }
 
@@ -66,10 +128,10 @@ li:hover{
         width: 100%;
         background-color: white;
         position: fixed;
-        z-index: 200 ;
+        z-index: 3 ;
         transform: translateY(-130%);
         transition: transform 0.5s ease-in-out !important;
-        border-bottom: 3px solid lavender;
+        border-bottom: 2px solid gainsboro;
     }
     .open {
         
@@ -88,15 +150,37 @@ li:hover{
     }
 
    
-    .hamMenu{
+    /* .hamMenu{
         width: 100% ;
         z-index: 300;
-        display: block !important;
+        display: inline-block !important;
         position: relative;
         background-color: white;
         padding: 10px;
+    } */
+
+    .mobile{
+        display:flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        z-index: 4;
+        width: 100%;
+        background-color: snow;
     }
     
+    
+   
+    .mobile .hamMenu{
+        width: fit-content;
+        
+    }
+    
+    .ham{
+        display:block !important;
+    }
 
-
+    .brand a{
+        display: block !important;
+    }
 }
