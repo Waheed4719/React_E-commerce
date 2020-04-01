@@ -59,7 +59,10 @@ function Cart(props){
         });
         console.log(total)
         setTotal(total)
-        setShowTotal(true)
+        if(total>0){
+            setShowTotal(true)
+        }
+        
     }
 
    
@@ -113,7 +116,7 @@ function Cart(props){
     if(cartContent){
          cartBlock = cartContent.map((hi,index) => 
          <tr key={index}>
-             {hi.images? <td style={{padding: "10px"}}><img className="cart_img" alt="product_image"  src ={`${Url}/${hi.images[0]}`} /></td>:'' }
+             {hi.images? <td style={{padding: "10px"}}><img className="cart_img" alt="product_image"  src ={`${Url}/${hi.images[0]}`} /></td>:null }
              <td><strong>{hi.title}</strong></td><td><strong>{hi.quantity}</strong></td><td><strong>${hi.price}</strong></td><td><Button onClick={() => removeFromCart(hi._id)}>Remove</Button></td></tr>)
     }
  
@@ -121,7 +124,8 @@ function Cart(props){
         
         <div className="cart-page" >
             <h3>This is the Cart page</h3>
-          <table >
+            {cartContent.length?
+          <table>
               <tbody>
               <tr><th>Product Image</th>
                   <th>Product Name</th>
@@ -129,17 +133,15 @@ function Cart(props){
                   <th>Product Price</th>
                   <th>Action</th></tr>
               {cartBlock}</tbody>
-             
+          </table>:null}
 
-
-          </table>
-
-                 {ShowTotal ?
+                 {(ShowTotal>0) ?
                     <div style={{ marginTop: '3rem' }}>
                         <h2>Total amount: ${Total} </h2>
                     </div>
                     :
                     ShowSuccess ?
+                    
                         <Result
                             status="success"
                             title="Successfully Purchased Items"
@@ -165,7 +167,7 @@ function Cart(props){
    />
       }
           
-            
+            <br/>
         </div>
     )
 }

@@ -8,6 +8,9 @@
     background-color: white;
     padding: 100px;
 }
+.cont *{
+    font-family: open sans;
+}
 
 
 .d-log {
@@ -44,9 +47,7 @@
     border-radius: 6px;
 }
 
-.btn-outline-danger:hover {
-    color: white !important;
-}
+
 
 
 .icon:hover{

@@ -14,20 +14,21 @@ export class AdminLogin extends Component {
              email: '',
              pass: '',
              user: {},
-             error: {}
+             errors: {}
         }
         this.inputChangeHandler = this.inputChangeHandler.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
     }
 
-    // static getDerivedStateFromProps(nextProps,prevState){
-    //     if(JSON.stringify(nextProps.auth.errors) !== JSON.stringify(prevState)){
+    static getDerivedStateFromProps(nextProps,prevState){
+        if(JSON.stringify(nextProps.admin.errors) !== JSON.stringify(prevState)){
             
-    //         return {
-    //             error: nextProps.auth.errors
-    //         }
-    //     }
-    // }
+            return {
+                error: nextProps.admin.errors
+            }
+        }
+    }
+   
     inputChangeHandler(e){
         e.preventDefault();
         this.setState({
@@ -58,7 +59,7 @@ export class AdminLogin extends Component {
                     <Link to="/register"><small style={{marginLeft: "-150px"}} onClick={this.clearState}>Don't Have an account?</small></Link>
                    
                     
-                    <button onClick={this.onSubmit} className="btn btn-outline-danger m-3 ">Login</button>
+                    <button onClick={this.onSubmit} className="btn-outline m-3 ">Login</button>
                 </div>
             </div>
         )
