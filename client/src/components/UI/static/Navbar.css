@@ -54,7 +54,7 @@ li:hover{
 .nav-icon {
     height: 40px;
     width: 40px;
-    padding-top:10px;
+    padding-top:12px;
     display: flex;
     flex-direction: column;
     margin: 5px 15px;
@@ -62,7 +62,9 @@ li:hover{
     align-items: center;
     transition: transform 0.2s ease-in-out;
 }
-
+.brand a{
+    color: darkslategray !important;
+}
 
 
 
@@ -73,15 +75,15 @@ li:hover{
     width: 20px;
     content: '';
     border-radius: 6px;
-    background-color: goldenrod;
+    background-color: darkslategray;
     margin: 3px 0px;
-    transition: .2s ease-in-out;
+    transition: .4s ease-in-out;
 }
 .nav-icon:before{
-    transform: translateY(4px) rotate(135deg) translateX(-8px);
+    transform: translateY(4px) rotate(135deg) translateX(-9px);
 }
 .nav-icon::after{
-    transform: translateY(-4px) rotate(-135deg) translateX(8px);
+    transform: translateY(-4px) rotate(-135deg) translateX(9px);
 }
 
 .ni{
