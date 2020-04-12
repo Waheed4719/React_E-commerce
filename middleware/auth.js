@@ -21,7 +21,7 @@ function auth(req,res,next){
             }
         }
         catch(e){
-            res.status(400).json({error: 'token is not valid'})
+            res.status(400).json({error: 'Token is not valid'})
         }
      
 

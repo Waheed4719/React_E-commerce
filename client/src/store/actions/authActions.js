@@ -4,7 +4,8 @@ import * as Types from './types'
 import setAuthToken from './../../utils/setAuthToken'
 import { message } from 'antd'
 
-
+var tokenExpMsg = 'Token is not valid.'
+var notAuthMsg = 'Not Authorized.'
 export const login = (user,history) => dispatch => {
 
     Axios.post('/api/auth/login',user)
@@ -109,10 +110,19 @@ export const addToCart = (data,history) => dispatch =>{
             message.error(error.response.data.error + ' Please login')
             setTimeout(()=>{
                 
-                if(errorMsg ==='Not Authorized.' || errorMsg === 'Token is not valid.'){
-                    console.log('matches')
-                    history.push('/login')
-                }
+             if(errorMsg = notAuthMsg){
+                 history.push('/login')
+             }
+             else if(errorMsg = tokenExpMsg){
+                 localStorage.removeItem('auth_token')
+                 dispatch({
+                    type: Types.SET_USER,
+                    payload: {
+                        user: {}
+                    }
+                 })
+                 history.push('/login')
+             }
             },[2000])
         }
         console.log(error.response.data)
