@@ -20,7 +20,7 @@ if(token){
     let decode = jwtDecode(token)
     // var user = {}
     setAuthToken(token)
-    
+    console.log(decode)
     Axios.get(`/api/auth/getCartAndHistory?id=${decode._id}`)
     .then(user => {
         

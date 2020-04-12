@@ -34,7 +34,7 @@ export const login = (user,history) => dispatch => {
     })
     .catch(error=>{
         if(error){
-            
+          
             dispatch({
                 type: Types.USERS_ERROR,
                 payload: {
@@ -104,6 +104,17 @@ export const addToCart = (data,history) => dispatch =>{
     message.success('Item added to cart')
     })
     .catch(error =>{
+        if(error.response.data.error){
+            var errorMsg = error.response.data.error
+            message.error(error.response.data.error + ' Please login')
+            setTimeout(()=>{
+                
+                if(errorMsg ==='Not Authorized.' || errorMsg === 'Token is not valid.'){
+                    console.log('matches')
+                    history.push('/login')
+                }
+            },[2000])
+        }
         console.log(error.response.data)
         dispatch({
             type: Types.ERRORS,
