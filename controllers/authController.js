@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken'),
       registerValidator = require('./../validators/registerValidator'),
       User = require('./../models/User'),
       Payment = require('./../models/Payment'),
-      Product = require('./../models/Product')
+      Product = require('./../models/Product'),
       bcrypt = require('bcrypt'),
       async = require('async')
 

@@ -16,6 +16,7 @@ import AdminLogin from './pages/Admin/AdminLogin'
 import Home from './pages/Home';
 import {message} from 'antd'
 import UploadProduct from './pages/Admin/UploadProduct';
+import AdminDash from './pages/Admin/Dashboard'
 import GetUsers from './pages/Admin/GetUsers';
 import Cart from './containers/Cart'
 
@@ -40,7 +41,8 @@ function App() {
 <Route exact path="/login"  component={Login}/>
 <Route exact path="/register"  component={Register}/>
 <Route exact path="/admin/uploadProduct" component={UploadProduct} />
-<Route exact path="/admin/home" component={GetUsers} />
+<Route exact path="/admin/Users" component={GetUsers} />
+<Route exact path="/admin/dash" component={AdminDash} />
 
 
 </Switch>

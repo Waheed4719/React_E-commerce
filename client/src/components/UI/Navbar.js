@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import './static/Navbar.css'
 import {Link, useHistory} from 'react-router-dom'
 import {logout} from './../../store/actions/authActions'
 import {connect, useDispatch} from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-var flag = false;
+
 
 
 
@@ -50,11 +50,7 @@ const [isClicked, setisClicked] = useState(false)
     return (
         <div className="nav">
             <div className="mobile">
-            {/* <div className="hamMenu" onClick={hamMenu}style={{display: "none"}}>
-                <div></div>
-                <div></div>
-                <div></div>
-                </div> */}
+         
                 <a className="ham" onClick={hamMenu} style={{display: "none"}} href="#" ><div className="nav-icon"><div></div></div></a>
                 <div className="brand"><Link to="#">Sparta</Link></div>
             </div>
@@ -67,7 +63,9 @@ const [isClicked, setisClicked] = useState(false)
             }
            
            
+
             <Link to="/"><li >Home</li></Link>
+            
             <Link to="/store"><li >Store</li></Link>
             <Link to='/cart'><li style={{cursor:"pointer",}}><FontAwesomeIcon icon={['fas','shopping-cart']} size="1x" /><div className="p-1 mx-1 " 
             style={{fontSize:"14px",margin:"auto", display:"inline-block",width:"25px",height:"25px", backgroundColor:"dimgray",borderRadius:"20px",color:"white",fontWeight:"bolder"}}>{props.auth.user.cart?

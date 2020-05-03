@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken'),
       loginValidator = require('./../validators/loginValidator'),
       registerValidator = require('./../validators/registerValidator'),
       Admin = require('./../models/Admin'),
+      Product = require('./../models/Product'),
       bcrypt = require('bcrypt');
       
 
@@ -21,7 +22,7 @@ module.exports = {
                             
 
                             if(bcrypt.compareSync(pass, Admin.pass)) {
-                            let token = jwt.sign({_id: Admin._id,email:Admin.email,pass:Admin.pass,name:Admin.name,role:Admin.role,timestamp:Admin.timestamp},'SECRET',{expiresIn: '10m'})
+                            let token = jwt.sign({_id: Admin._id,email:Admin.email,pass:Admin.pass,name:Admin.name,role:Admin.role,timestamp:Admin.timestamp},'SECRET',{expiresIn: '7d'})
                             res.status(200).json({token: `Bearer ${token}`,success:true})}
                             else{
                                 res.status(400).json({error:"passwords don't match"})
@@ -80,6 +81,7 @@ module.exports = {
             },
 
             getUsers(req,res){
+                
                 User.find()
                 .then(users => {
                     if(users){
@@ -90,6 +92,19 @@ module.exports = {
                     }
                 })
                 .catch(error => res.status(400).json(error))
+            },
+
+            getProducts(req,res){
+                Product.find()
+                .then(prods =>{
+                    if(prods){
+                        res.status(200).json({products: prods})
+                    }
+                    else{
+                        res.status(404).json({error: "no products available"})
+                    }
+                })
+                .catch(error=> res.status(404).json({error:"no products available"}))
             }
 
 

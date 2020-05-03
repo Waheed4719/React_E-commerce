@@ -4,7 +4,8 @@ const express = require('express'),
       multer = require('multer'),
       DIR = './public/uploads',
       auth = require('./../middleware/auth.js'),
-      storage = require('./../server.js')  
+      storage = require('./../server.js'),
+      admin = require('./../middleware/admin')  
 
       
 router.post('/login',Login)

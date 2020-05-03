@@ -9,16 +9,23 @@ function auth(req,res,next){
         var token = token.split(" ");
         token = token[1];
         
-   
+        
         try{
             const decoded = jwt.verify(token, 'SECRET');
+            console.log(decoded)
             var foundUser = {}
             User.findOne({_id: decoded._id,role:decoded.role})
-            .then( user => foundUser = user )
-            if(foundUser){
-                req.user = decoded
-                next()
-            }
+            .then( user => {
+                
+                if(user){
+                        req.user = decoded
+                        next()
+                }
+                else{
+                    res.status(404).json({error: 'user not found'})
+                }
+            })
+            
         }
         catch(e){
             res.status(400).json({error: 'Token is not valid'})

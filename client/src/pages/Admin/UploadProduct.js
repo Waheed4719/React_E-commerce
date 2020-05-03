@@ -7,6 +7,10 @@ import { useHistory, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 const { Title } = Typography;
 const { TextArea } = Input;
+
+
+
+
 function UploadProduct (props) {
     const history = useHistory()
 
@@ -67,7 +71,7 @@ function UploadProduct (props) {
        
             
         // </div>
-        <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
+        <div style={{ maxWidth: "700px", margin: "2rem auto"}}>
             <div style={{ textAlign: "center", marginBottom: "2rem" }}>
                 <Title level={2}> Upload Product</Title>
             </div>

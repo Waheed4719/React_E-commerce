@@ -1,0 +1,7 @@
+.users th, .users td{
+    min-width: 200px;
+}
+
+.users{
+    padding: 20px 20px;
+}

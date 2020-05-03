@@ -5,13 +5,7 @@ import Axios from 'axios';
 import './carousel.css'
 function FileUpload(props) {
     
-    var Url =''
-    if(window.location.host.includes('localhost')){
-       Url = 'http://localhost:5000'
-    }
-    else{
-       Url = 'https://powerful-garden-71525.herokuapp.com'
-    }
+    var Url =window.location.protocol + '//' + window.location.host
     const [Images, setImages] = useState([])
 
     const onDrop = (files) => {
