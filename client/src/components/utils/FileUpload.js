@@ -22,7 +22,7 @@ function FileUpload(props) {
                 if (response.data.success) {
                     var replaceStr = "\\"
                     setImages([...Images, response.data.url])
-                    var newUrl = response.data.url.replace('/',replaceStr)
+                    var newUrl = response.data.url.replace(/\//g,replaceStr)
                     console.log('this is the new Url', newUrl)
                     props.refreshFunction([...Images, newUrl])
 
