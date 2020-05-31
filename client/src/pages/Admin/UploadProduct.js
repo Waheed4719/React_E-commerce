@@ -53,6 +53,7 @@ function UploadProduct (props) {
             console.log(Axios.defaults.headers.common['Authorization'])
             if (response.data.success) {
                 alert('Product Successfully Uploaded')
+                console.log(response.data)
                 history.push('/store')
             } else {
                 alert('Failed to upload Product')
