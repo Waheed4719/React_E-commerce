@@ -14,14 +14,17 @@ function FileUpload(props) {
         const config = {
             header: { 'content-type': 'multipart/form-data' }
         }
+        console.log(files[0])
         formData.append("file", files[0])
         //save the Image we chose inside the Node Server 
         Axios.post('/api/products/uploadfiles', formData, config)
             .then(response => {
                 if (response.data.success) {
-
+                    var replaceStr = "\\"
                     setImages([...Images, response.data.url])
-                    props.refreshFunction([...Images, response.data.url])
+                    var newUrl = response.data.url.replace('/',replaceStr)
+                    console.log('this is the new Url', newUrl)
+                    props.refreshFunction([...Images, newUrl])
 
                 } else {
                     alert('Failed to save the Image in Server')
