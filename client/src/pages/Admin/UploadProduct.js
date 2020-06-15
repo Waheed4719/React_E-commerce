@@ -72,17 +72,15 @@ function UploadProduct (props) {
        
             
         // </div>
-        <div style={{ maxWidth: "700px", margin: "2rem auto"}}>
+        <div style={{paddingTop: "80px",maxWidth: "750px",margin:"auto"}} >
             <div style={{ textAlign: "center", marginBottom: "2rem" }}>
                 <Title level={2}> Upload Product</Title>
             </div>
 
 
-            <Form onSubmit={onSubmit} style={{textAlign:'left'}}>
+            <Form onSubmit={onSubmit} style={{textAlign:'left', paddingLeft: "10px",paddingRight: "10px", paddingBottom:"40px"}}>
 
-               
-                <Upload refreshFunction={updateImages} />
-
+               <Upload refreshFunction={updateImages} />
                 <br />
                 <br />
                 <label>Title</label>
